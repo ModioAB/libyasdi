@@ -1,0 +1,24 @@
+To build the binaries for ARMv7 that we need, do the following:
+
+
+Log into a Scaleways or Other Debian ARMv7 machine
+
+place the check-out in /root/yadsi
+
+$ docker run -ti --volume /root/yadsi:/root/yadsi:rw registry.gitlab.com/modioab/base-image:debian-armv7-latest /bin/bash
+
+Inside the container, run the following
+
+$ apt-get update
+$ apt-get install build-essential fakeroot devscripts cmake
+$ cd /root/yadsi
+$ debuild  --no-lintian binary
+$ ls ..
+
+Upload the .deb files to the approrpiate place (modio-distribution ) and run
+from there.
+
+
+
+
+
